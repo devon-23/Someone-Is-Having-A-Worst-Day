@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Somebody's Having a Worse Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="eyebrow">● LIVE GLOBAL CHAOS MONITOR</div>
+    <h1>Somebody's Having<br>A Worse Day</h1>
+    <p class="subtitle">Your day isn't that bad. Here's proof.</p>
+
+    <div class="search-bar">
+      <input type="text" id="cityInput" placeholder="Enter a city… try Chicago, Mumbai, Lagos" autocomplete="off" />
+      <button onclick="fetchAllData()">SCAN</button>
+    </div>
+    <div class="preset-cities">
+      Try:
+      <span onclick="setCity('Chicago')">Chicago</span>
+      <span onclick="setCity('Houston')">Houston</span>
+      <span onclick="setCity('Mumbai')">Mumbai</span>
+      <span onclick="setCity('London')">London</span>
+      <span onclick="setCity('Miami')">Miami</span>
+      <span onclick="setCity('Los Angeles')">LA</span>
+      <span onclick="setCity('Delhi')">Delhi</span>
+    </div>
+  </header>
+
+  <!-- ══ HALL OF MISERY ══ -->
+  <div class="section-heading">HALL OF MISERY — TODAY'S WORST OFFENDERS</div>
+  <div class="hom-grid" id="homGrid">
+    <!-- injected by JS on load -->
+  </div>
+  <div style="text-align:center; font-family:'DM Mono',monospace; font-size:0.62rem; color:var(--muted); margin-bottom:0.5rem;">
+    Click any card to scan that location ↑
+  </div>
+
+  <!-- ══ DIVIDER ══ -->
+  <div class="section-heading" id="resultsHeading" style="display:none">YOUR SCAN RESULTS</div>
+
+  <!-- ══ STATUS ══ -->
+  <div class="status-bar" id="statusBar">
+    <span class="status-dot" id="statusDot"></span>
+    <span id="statusText">ENTER A CITY OR CLICK A CARD ABOVE</span>
+  </div>
+
+  <!-- ══ DEMO BANNER ══ -->
+  <div class="demo-banner" id="demoBanner" style="display:none">
+    ⚠ DEMO MODE — Add your real API keys to <strong>keys.js</strong> for live data.
+    See <a href="keys.js" target="_blank">keys.js</a> for sign-up links.
+  </div>
+
+  <!-- ══ LOADING ══ -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingText">SCANNING FOR MISERY…</div>
+  </div>
+
+  <!-- ══ ERROR ══ -->
+  <div class="error-msg" id="errorMsg"></div>
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker-wrap" id="tickerWrap" style="display:none">
+    <div class="ticker-inner" id="tickerInner"></div>
+  </div>
+
+  <!-- ══ HERO CARD ══ -->
+  <div class="hero-card" id="heroCard">
+    <div class="card-accent" style="background:linear-gradient(180deg,#ff2d2d,#ff7a1a)"></div>
+    <div class="hero-location" id="heroLocation">CITY, COUNTRY</div>
+    <div class="hero-headline" id="heroHeadline">Loading…</div>
+    <div class="hero-body" id="heroBody"></div>
+    <div class="misery-score">
+      <div class="label">MISERY INDEX</div>
+      <div class="number" id="miseryNumber">—</div>
+      <div class="suffix">/ 100</div>
+    </div>
+  </div>
+
+  <!-- ══ DATA CARDS ══ -->
+  <div class="grid" id="dataGrid"></div>
+
+  <footer>
+    SOURCES: OPENWEATHERMAP · AVIATIONSTACK · USGS EARTHQUAKE · TOMTOM TRAFFIC · OPENAQ AIR QUALITY · NASA EONET NATURAL EVENTS · OPEN-METEO ALERTS
+    <br>ALL APIS USED UNDER FREE / PUBLIC TIERS · DATA IS ILLUSTRATIVE · REFRESH FOR LATEST CONDITIONS
+  </footer>
+
+</div>
+<script src="keys.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
